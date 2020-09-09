@@ -485,16 +485,23 @@
                                     }
                                 ],
                                 "livenessProbe": {
+                                    "timeoutSeconds": 10,
+                                    "initialDelaySeconds": 90,
+                                    "successThreshold:": 1,
+                                    "failureThreshold": 3,
                                     "exec": {
                                         "command": [
                                             "/bin/bash",
                                             "-c",
                                             "/opt/eap/bin/livenessProbe.sh"
                                         ]
-                                    },
-                                    "initialDelaySeconds": 60
+                                    }
                                 },
                                 "readinessProbe": {
+                                    "timeoutSeconds": 10,
+                                    "initialDelaySeconds": 90,
+                                    "successThreshold:": 1,
+                                    "failureThreshold": 3,
                                     "exec": {
                                         "command": [
                                             "/bin/bash",
