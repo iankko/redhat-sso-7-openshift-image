@@ -138,6 +138,11 @@ artifacts:
        target: jboss-eap-7.3.6.GA-CR1-patch.zip
        md5: 2626e4536c4d7b2a0138ba1f50ecff58
        url: http://$DOWNLOAD_SERVER/devel/candidates/jboss/eap/JBEAP-7.3.6.GA-CR1/jboss-eap-7.3.6.GA-CR1-patch.zip
+
+     - name: jolokia-jvm
+       target: jolokia-jvm-1.6.2.redhat-00002-agent.jar
+       md5: 760f2fbaf6b142192f3cee2c99bfcbf8
+       url: http://$DOWNLOAD_SERVER/brewroot/packages/org.jolokia-jolokia/1.6.2.redhat_00002/1/maven/org/jolokia/jolokia-jvm/1.6.2.redhat-00002/jolokia-jvm-1.6.2.redhat-00002-agent.jar
 run:
       cmd:
           - "/opt/eap/bin/openshift-launch.sh"
