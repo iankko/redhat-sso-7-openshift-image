@@ -128,6 +128,13 @@ packages:
       # "which" tool is handy for debugging issues / troubleshooting
       - which
 
+# Temporarily add EAP artifacts (used for KEYCLOAK-18574 change testing)
+artifacts:
+     - name: jboss-eap-7.4.0.GA-CR3.zip
+       target: jboss-eap-7.4.0.GA-CR3.zip
+       md5: feddc39d58a29b1ed9791121a77e8b49
+       url: http://$DOWNLOAD_SERVER/devel/candidates/middleware/eap/JBEAP-7.4.0.GA-CR3/jboss-eap-7.4.0.GA-CR3.zip
+
 run:
       cmd:
           - "/opt/eap/bin/openshift-launch.sh"
