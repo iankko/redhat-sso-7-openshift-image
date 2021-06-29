@@ -99,8 +99,10 @@ modules:
 
           # RH-SSO product specific modules from modules/ path in this repository
           - name: sso
-          - name: keycloak.openshift.clients
-            version: '1.0'
+          # KEYCLOAK-18574 Temporarily disable adapters module till there's keycloak-parent-14.0.x build in Brew
+          #                containing the necessary artifacts
+          # - name: keycloak.openshift.clients
+          #  version: '1.0'
           # KEYCLOAK-18574 sso.config.launch.setup.75 needs update for EAP 7.4.0
           # - name: sso.config.launch.setup.75
           - name: sso.db.drivers
