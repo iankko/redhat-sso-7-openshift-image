@@ -73,24 +73,25 @@ modules:
           - name: jboss-eap-modules
             git:
                   url: https://github.com/jboss-container-images/jboss-eap-modules.git
-                  ref: EAP_740_CR1
+                  ref: EAP_740_CR3
 
           - name: jboss-eap-image
             git:
                   url: https://github.com/jboss-container-images/jboss-eap-7-image.git
-                  ref: EAP_740_CR1
+                  ref: EAP_740_CR3
 
           - name: cct_module
             git:
                   url: https://github.com/jboss-openshift/cct_module.git
-                  ref: 0.41.4
+                  ref: 0.45.2
 
           - name: sso-modules
             path: modules
 
       install:
-          - name: bz-1769831
-            version: '1.0'
+          # KEYCLOAK-18574 Verify if 'bz-1769831' module below is still needed!!!  
+          #- name: bz-1769831
+          #  version: '1.0'
           - name: sso-jdk
             version: &jdk_version '11'
           - name: eap
@@ -100,11 +101,13 @@ modules:
           - name: sso
           - name: keycloak.openshift.clients
             version: '1.0'
-          - name: sso.config.launch.setup.75
+          # KEYCLOAK-18574 sso.config.launch.setup.75 needs update for EAP 7.4.0
+          # - name: sso.config.launch.setup.75
           - name: sso.db.drivers
             version: '1.0'
-          - name: sso.python
-            version: '3'
+          # KEYCLOAK-18574 sso.python.3 got replaced by os-eap-python:3.6
+          #- name: sso.python
+          #version: '3'
 
           # Other common modules from the main CE cct_module repository
           - name: openshift-layer
@@ -114,7 +117,7 @@ modules:
           - name: sso-pre-launch-checks
 
           # This needs to be the very last, after all updates to standalone-openshift.xml have been done. See eg. https://access.redhat.com/solutions/3402171 for use
-          - name: os-eap-extensions
+          # - name: os-eap-extensions
           - name: sso-cli-extensions
 
           - name: sso-rm-openjdk
