@@ -25,6 +25,7 @@ labels:
       value: "sso,sso75,keycloak"
     - name: "io.openshift.s2i.scripts-url"
       value: "image:///usr/local/s2i"
+
 envs:
     - name: "JBOSS_PRODUCT"
       value: *product
@@ -66,8 +67,10 @@ envs:
     - name: "SCRIPT_DEBUG"
       description: "If set to true, ensurses that the bash scripts are executed with the -x option, printing the commands and their arguments as they are executed."
       example: "true"
+
 ports:
     - value: 8443
+
 modules:
       repositories:
           - name: jboss-eap-modules
@@ -89,7 +92,7 @@ modules:
             path: modules
 
       install:
-          # KEYCLOAK-18574 Verify if 'bz-1769831' module below is still needed!!!  
+          # KEYCLOAK-18574 Verify if 'bz-1769831' module below is still needed!!!
           #- name: bz-1769831
           #  version: '1.0'
           - name: sso-jdk
@@ -99,10 +102,8 @@ modules:
 
           # RH-SSO product specific modules from modules/ path in this repository
           - name: sso
-          # KEYCLOAK-18574 Temporarily disable adapters module till there's keycloak-parent-14.0.x build in Brew
-          #                containing the necessary artifacts
-          # - name: keycloak.openshift.clients
-          #  version: '1.0'
+          - name: keycloak.openshift.clients
+            version: '1.0'
           # KEYCLOAK-18574 sso.config.launch.setup.75 needs update for EAP 7.4.0
           # - name: sso.config.launch.setup.75
           - name: sso.db.drivers
@@ -124,6 +125,14 @@ modules:
 
           - name: sso-rm-openjdk
             version: *jdk_version
+
+# Temporarily add EAP artifacts (used for KEYCLOAK-18574 change testing)
+artifacts:
+     - name: jboss-eap-7.4.0.GA-CR3.zip
+       target: jboss-eap-7.4.0.GA-CR3.zip
+       md5: feddc39d58a29b1ed9791121a77e8b49
+       url: http://$DOWNLOAD_SERVER/devel/candidates/middleware/eap/JBEAP-7.4.0.GA-CR3/jboss-eap-7.4.0.GA-CR3.zip
+
 packages:
       manager: microdnf
       content_sets_file: content_sets.yaml
@@ -132,13 +141,6 @@ packages:
       - findutils
       # "which" tool is handy for debugging issues / troubleshooting
       - which
-
-# Temporarily add EAP artifacts (used for KEYCLOAK-18574 change testing)
-artifacts:
-     - name: jboss-eap-7.4.0.GA-CR3.zip
-       target: jboss-eap-7.4.0.GA-CR3.zip
-       md5: feddc39d58a29b1ed9791121a77e8b49
-       url: http://$DOWNLOAD_SERVER/devel/candidates/middleware/eap/JBEAP-7.4.0.GA-CR3/jboss-eap-7.4.0.GA-CR3.zip
 
 run:
       cmd:
