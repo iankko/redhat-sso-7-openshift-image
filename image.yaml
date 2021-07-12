@@ -104,8 +104,7 @@ modules:
           - name: sso
           - name: keycloak.openshift.clients
             version: '1.0'
-          # KEYCLOAK-18574 sso.config.launch.setup.75 needs update for EAP 7.4.0
-          # - name: sso.config.launch.setup.75
+          - name: sso.config.launch.setup.75
           - name: sso.db.drivers
             version: '1.0'
           # KEYCLOAK-18574 sso.python.3 got replaced by os-eap-python:3.6
