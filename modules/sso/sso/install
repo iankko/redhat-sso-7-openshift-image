@@ -7,6 +7,9 @@ SERVER_OVERLAY_ARCHIVE="keycloak-server-overlay.zip"
 
 unzip -o ${SOURCES_DIR}/${SERVER_OVERLAY_ARCHIVE} -d "${JBOSS_HOME}"
 
+echo "Content of ${JBOSS_HOME} directory"
+tree "${JBOSS_HOME}"
+
 pushd "${JBOSS_HOME}/bin"
 ./jboss-cli.sh --file=keycloak-install.cli
 popd
