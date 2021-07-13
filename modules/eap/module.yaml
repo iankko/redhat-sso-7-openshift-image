@@ -6,9 +6,11 @@ version: '1.0'
 modules:
       install:
           ### Image :: Standalone ####
+          - name: eap-74-beta-galleon-latest
+          # eap-740-beta needs to be called after eap-74-beta-galleon-latest,
+          # in order the JBOSS_HOME envvar to be set
           - name: eap-740-beta
             version: "7.4.0.Beta"
-          - name: eap-74-beta-galleon-latest
           - name: jboss.container.eap.setup
           - name: eap-install-cleanup
 
