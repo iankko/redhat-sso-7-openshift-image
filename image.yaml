@@ -76,12 +76,15 @@ modules:
           - name: jboss-eap-modules
             git:
                   url: https://github.com/jboss-container-images/jboss-eap-modules.git
-                  ref: EAP_740_CR3
+                  ref: EAP_740_BETA_CR1
+                  #ref: EAP_740_CR3
 
           - name: jboss-eap-image
             git:
                   url: https://github.com/jboss-container-images/jboss-eap-7-image.git
-                  ref: EAP_740_CR3
+                  ref: EAP_740_BETA_CR1
+                  # EAP_740_BETA_CR1 is the last tag unzipping JBoss EAP from zip, while
+                  # EAP_740_CR3 is the latest one
 
           - name: cct_module
             git:
@@ -108,8 +111,8 @@ modules:
           - name: sso.db.drivers
             version: '1.0'
           # KEYCLOAK-18574 sso.python.3 got replaced by os-eap-python:3.6
-          #- name: sso.python
-          #version: '3'
+          - name: os-eap-python
+            version: '3.6'
 
           # Other common modules from the main CE cct_module repository
           - name: openshift-layer
@@ -128,7 +131,8 @@ modules:
 # Temporarily add EAP artifacts (used for KEYCLOAK-18574 change testing)
 artifacts:
      - name: jboss-eap-7.4.0.GA-CR3.zip
-       target: jboss-eap-7.4.0.GA-CR3.zip
+       # jboss-eap-7.4.Beta.zip is expected by install script of 'eap-740-beta' module
+       target: jboss-eap-7.4.Beta.zip
        md5: feddc39d58a29b1ed9791121a77e8b49
        url: http://$DOWNLOAD_SERVER/devel/candidates/middleware/eap/JBEAP-7.4.0.GA-CR3/jboss-eap-7.4.0.GA-CR3.zip
 

@@ -6,16 +6,56 @@ version: '1.0'
 modules:
       install:
           ### Image :: Standalone ####
-          - name: eap-74-galleon-latest
+          - name: eap-74-beta-galleon-latest
+          - name: jboss.container.eap.setup
+          - name: eap-install-cleanup
+
 
           ### Image :: OpenShift ####
           # Order of the modules installation below matters!!! DO NOT CHANGE it unless
           # you first verified the image with changed order still works correctly
           # Common modules from the main CE cct_module repository
+          - name: jboss.container.maven.default
           - name: dynamic-resources
             version: '1.0'
-          - name: os-eap-python
-            version: '3.6'
+          - name: jboss.container.eap.s2i.galleon
+          - name: jboss.container.eap.galleon
+          - name: jboss.container.eap.galleon.config.ee
+          - name: jboss.container.eap.galleon.build-settings
+            version: "public"
+          - name: jboss.container.eap.openshift.modules
+          - name: jboss.container.java.jvm.bash
+          - name: jboss.container.eap.launch
+          - name: jboss.container.wildfly.launch.admin
+          - name: jboss.container.wildfly.launch.access-log-valve
+          - name: jboss.container.wildfly.launch-config.config
+          - name: jboss.container.wildfly.launch-config.os
+          - name: jboss.container.wildfly.launch.datasources
+          - name: jboss.container.wildfly.launch.extensions
+          - name: jboss.container.wildfly.launch.json-logging
+          - name: jboss.container.wildfly.launch.jgroups
+          - name: jboss.container.wildfly.launch.filters
+          - name: jboss.container.wildfly.launch.logger-category
+          - name: jboss.container.wildfly.launch.os.node-name
+          - name: jboss.container.wildfly.launch.deployment-scanner
+          - name: jboss.container.wildfly.launch.keycloak
+          - name: jboss.container.wildfly.launch.https
+          - name: jboss.container.wildfly.launch.security-domains
+          - name: jboss.container.wildfly.launch.elytron
+          - name: jboss.container.wildfly.launch.port-offset
+          - name: jboss.container.wildfly.launch.resource-adapters
+          - name: jboss.container.wildfly.launch.messaging
+          - name: jboss.container.wildfly.launch.statefulset
+          - name: jboss.container.wildfly.galleon.fp-content.jolokia
+          - name: jboss.container.wildfly.galleon.fp-content.java
+          - name: jboss.container.wildfly.galleon.fp-content.config
+          - name: jboss.container.wildfly.galleon.fp-content.mvn
+          - name: jboss.container.wildfly.galleon.fp-content.ejb-tx-recovery
+          - name: os-eap-probes
+            version: "3.0"
+          # We keep this one to only advertise that hawkular is no more supported.
+          - name: jboss.container.eap.hawkular
+
 #          - name: jboss.container.eap.s2i.bash
 #          - name: jboss.container.java.jvm.bash
 #          - name: jboss.container.jolokia.bash
