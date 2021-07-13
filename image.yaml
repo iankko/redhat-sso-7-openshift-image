@@ -73,6 +73,11 @@ ports:
 
 modules:
       repositories:
+          - name: cct_module
+            git:
+                  url: https://github.com/jboss-openshift/cct_module.git
+                  ref: 0.45.2
+
           - name: jboss-eap-modules
             git:
                   url: https://github.com/jboss-container-images/jboss-eap-modules.git
@@ -86,10 +91,11 @@ modules:
                   # EAP_740_BETA_CR1 is the last tag unzipping JBoss EAP from zip, while
                   # EAP_740_CR3 is the latest one
 
-          - name: cct_module
+          - name: wildfly-cekit-modules
             git:
-                  url: https://github.com/jboss-openshift/cct_module.git
-                  ref: 0.45.2
+                  url: https://github.com/wildfly/wildfly-cekit-modules.git
+                  ref: 0.24.0
+                  # EAP's EAP_740_BETA_CR1 tag uses ref: 0.22.1, but let's try the most recent one
 
           - name: sso-modules
             path: modules
