@@ -29,6 +29,19 @@ modules:
   install:
   - name: sso.security.cve-2020-10695
     version: '1.0'
+  # Moreover, list JDK-11 overrides required / expected by EAP image modules below. See modules listed in:
+  # https://github.com/jboss-container-images/jboss-eap-7-openshift-image/blob/eap74-dev/rel-jdk11-overrides.yaml
+  # for details.
+  - name: jboss.container.eap.galleon.build-settings
+    version: "osbs"
+  - name: jboss.container.maven.module
+    version: "3.6"
+  - name: os-eap-python
+    version: '3.6'
+  - name: jboss.container.jolokia
+    version: '7'
+  - name: jboss.container.prometheus
+    version: '7'
 
 execute:
 - script: configure.sh

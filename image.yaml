@@ -81,15 +81,12 @@ modules:
           - name: jboss-eap-modules
             git:
                   url: https://github.com/jboss-container-images/jboss-eap-modules.git
-                  ref: EAP_740_BETA_CR1
-                  #ref: EAP_740_CR3
+                  ref: EAP_740_CR3
 
           - name: jboss-eap-image
             git:
                   url: https://github.com/jboss-container-images/jboss-eap-7-image.git
-                  ref: EAP_740_BETA_CR1
-                  # EAP_740_BETA_CR1 is the last tag unzipping JBoss EAP from zip, while
-                  # EAP_740_CR3 is the latest one
+                  ref: EAP_740_CR3
 
           - name: wildfly-cekit-modules
             git:
@@ -106,6 +103,8 @@ modules:
           #  version: '1.0'
           - name: sso-jdk
             version: &jdk_version '11'
+          - name: jboss.container.maven
+            version: "8.2.3.6"
           - name: eap
             version: '1.0'
 
@@ -136,11 +135,10 @@ modules:
 
 # Temporarily add EAP artifacts (used for KEYCLOAK-18574 change testing)
 artifacts:
-     - name: jboss-eap-7.4.0.GA-CR3.zip
-       # jboss-eap-7.4.Beta.zip is expected by install script of 'eap-740-beta' module
-       target: jboss-eap-7.4.Beta.zip
-       md5: feddc39d58a29b1ed9791121a77e8b49
-       url: http://$DOWNLOAD_SERVER/devel/candidates/middleware/eap/JBEAP-7.4.0.GA-CR3/jboss-eap-7.4.0.GA-CR3.zip
+     - name: eap-image-maven-repo
+       target: maven-repo.zip
+       md5: 244700ed92787ad537e360069d9ca9b1
+       url: http://$DOWNLOAD_SERVER/devel/candidates/jboss/eap/JBEAP-7.4.0.GA-CR3/jboss-eap-7.4.0.GA-CR3-image-builder-maven-repository.zip
 
 packages:
       manager: microdnf
