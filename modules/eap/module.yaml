@@ -6,9 +6,6 @@ version: '1.0'
 modules:
       install:
           ### Image :: Standalone ####
-          # Call 'jboss.container.wildfly.s2i.bash' before 'eap-74-galleon-latest' module
-          # to ensure required GALLEON_MAVEN_BUILD_IMG_SETTINGS_XML envvar is defined
-          - name: jboss.container.wildfly.s2i.bash
           - name: eap-74-galleon-latest
           - name: jboss.container.eap.setup
           - name: eap-install-cleanup
@@ -17,13 +14,22 @@ modules:
           # Order of the modules installation below matters!!! DO NOT CHANGE it unless
           # you first verified the image with changed order still works correctly
           # Common modules from the main CE cct_module repository
-          - name: jboss.container.maven.default
+          - name: jboss.container.maven
+            version: "8.2.3.6"
+          - name: jboss.container.maven.module
+            version: "3.6"
+          - name: os-eap-python
+            version: '3.6'
+          - name: jboss.container.jolokia
+            version: '7'
+          - name: jboss.container.prometheus
+            version: '7'
           - name: dynamic-resources
           - name: jboss.container.eap.s2i.galleon
           - name: jboss.container.eap.galleon
           - name: jboss.container.eap.galleon.config.ee
           - name: jboss.container.eap.galleon.build-settings
-            version: "public"
+            version: "osbs"
           - name: jboss.container.eap.openshift.modules
           - name: jboss.container.java.jvm.bash
           - name: jboss.container.eap.launch

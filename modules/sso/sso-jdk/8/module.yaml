@@ -29,23 +29,6 @@ modules:
   install:
   - name: sso.security.cve-2020-10695
     version: '1.0'
-  # Moreover, list JDK-8 overrides required / expected by EAP image modules below. See modules listed in:
-  # https://github.com/jboss-container-images/jboss-eap-7-openshift-image/blob/eap74-dev/rel-jdk8-overrides.yaml
-  # for details.
-  #
-  # Note: The 'jboss.container.openjdk.jdk' & 'jboss.container.maven' modules from that list
-  #       were intentionally omitted below, since RH-SSO images handles actions performed by
-  #       those modules differently.
-  - name: jboss.container.eap.galleon.build-settings
-    version: "osbs"
-  - name: os-eap-txnrecovery.run
-    version: 'python2'
-  - name: os-eap-probes
-    version: "2.0"
-  - name: jboss.container.jolokia
-    version: '7'
-  - name: jboss.container.prometheus
-    version: '7'
 
 execute:
 - script: configure.sh

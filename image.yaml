@@ -103,8 +103,6 @@ modules:
           #  version: '1.0'
           - name: sso-jdk
             version: &jdk_version '11'
-          - name: jboss.container.maven
-            version: "8.2.3.6"
           - name: eap
             version: '1.0'
 
@@ -115,9 +113,6 @@ modules:
           - name: sso.config.launch.setup.75
           - name: sso.db.drivers
             version: '1.0'
-          # KEYCLOAK-18574 sso.python.3 got replaced by os-eap-python:3.6
-          - name: os-eap-python
-            version: '3.6'
 
           # Other common modules from the main CE cct_module repository
           - name: openshift-layer
