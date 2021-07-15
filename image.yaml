@@ -69,6 +69,8 @@ envs:
       example: "true"
 
 ports:
+    # https (443) is required for 'jboss.container.wildfly.galleon.build-feature-pack' module
+    - value: 443
     - value: 8443
 
 modules:
