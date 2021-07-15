@@ -44,7 +44,7 @@ if [ -f "${ZIPPED_REPO}" ]; then
     cp -r $TMP_GALLEON_LOCAL_MAVEN_REPO $GALLEON_LOCAL_MAVEN_REPO
   fi
 else
-  if [ ! -f "tmp/offliner.jar" ]; then
+  if [ ! -f "/tmp/offliner.jar" ]; then
     # Download offliner runtime (if not present yet)
     curl -o /tmp/offliner.jar -v -L https://repo.maven.apache.org/maven2/com/redhat/red/offliner/offliner/$OFFLINER_VERSION/offliner-$OFFLINER_VERSION.jar
   fi
