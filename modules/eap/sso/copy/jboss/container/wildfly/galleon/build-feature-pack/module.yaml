@@ -1,0 +1,46 @@
+schema_version: 1
+name: sso.copy.jboss.container.wildfly.galleon.build-feature-pack
+version: '0.24.0'
+description: "RH-SSO copy of the 'jboss.container.wildfly.galleon.build-feature-pack'
+  module from '0.24.0' tag of the 'wildfly-cekit-modules' repository to populate user
+  maven repositoryand build galleon FP.
+
+  Compared to the version from original module, the calls to curl tool to download
+  'offliner.jar' & 'offliner.txt' artifacts were replaced by sharing artifacts with
+  CEKit directly to avoid downloading them each time the module is called."
+
+envs:
+- name: WILDFLY_VERSION
+  description: "Mandatory. WildFly server version."
+- name: WILDFLY_DIST_MAVEN_LOCATION
+  description: "Mandatory.URL to maven wildfly dist artifact."
+- name: OFFLINER_URLS
+  description: "Mandatory. One or more URL to maven repositories used by offliner to retrieve maven artifacts. Format \"--url <maven repo url> [--url <maven repo url>]"
+- name: GALLEON_FP_PATH
+  description: "Mandatory. Absolute path to galleon feature-pack maven project."
+- name: GALLEON_FP_COMMON_PKG_NAME
+  description: "Optional. Name of galleon package that contains common content."
+- name: GALLEON_BUILD_FP_MAVEN_ARGS_APPEND
+  description: "Optional. Maven arguments to use when building galleon feature-pack."
+- name: OFFLINER_VERSION
+  value: "1.6"
+- name: DEBUG_GALLEON_FP_SRC
+  description: By default the feature-pack sources are deleted. Set this variable to true to keep it in the image (mainly for debug purpose).
+execute:
+- script: configure.sh
+  user: 185
+
+modules:
+  install:
+  - name: jboss.container.maven.default
+
+artifacts:
+  - name: offliner.jar
+    target: /tmp/offliner.jar
+    md5: 1aae090277ddcaa89dbcfefff256ae58
+    # Be sure the offliner version in the URL matches offliner version in 'OFFLINER_VERSION' env var above
+    url: https://repo.maven.apache.org/maven2/com/redhat/red/offliner/offliner/1.6/offliner-1.6.jar
+
+  - name: offliner.txt
+    target: /tmp/offliner.txt
+    url: https://repository.jboss.org/nexus/content/groups/public/org/wildfly/wildfly-dist/23.0.2.Final/wildfly-dist-23.0.2.Final-artifact-list.txt
