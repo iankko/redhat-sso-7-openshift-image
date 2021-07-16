@@ -107,6 +107,7 @@ if [ ! -z "$GALLEON_FP_COMMON_PKG_NAME" ]; then
 fi
 rm -rf $JBOSS_HOME/*
 
+mkdir -p "${TMP_GALLEON_LOCAL_MAVEN_REPO}/org/wildfly/galleon-plugins/wildfly-galleon-maven-plugin/5.2.0.Alpha2"
 cp "${CEKIT_ARTIFACTS_DEST_DIR}/wildfly-galleon-maven-plugin-5.2.0.Alpha2.pom" \
    "${TMP_GALLEON_LOCAL_MAVEN_REPO}/org/wildfly/galleon-plugins/wildfly-galleon-maven-plugin/5.2.0.Alpha2"
 
