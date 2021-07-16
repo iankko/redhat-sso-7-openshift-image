@@ -72,7 +72,7 @@ modules:
             version: "3.0"
           # We keep this one to only advertise that hawkular is no more supported.
           # Remove the following two to reduce the count of layers
-          # - name: jboss.container.eap.hawkular
+          - name: jboss.container.eap.hawkular
           # - name: jboss.container.util.logging.bash
           # Remove following two to reduce count of layers
           # - name: jboss.container.eap.prometheus.config
