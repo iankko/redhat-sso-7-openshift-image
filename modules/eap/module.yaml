@@ -63,8 +63,9 @@ modules:
           - name: os-eap-probes
             version: "3.0"
           # We keep this one to only advertise that hawkular is no more supported.
-          - name: jboss.container.eap.hawkular
-          - name: jboss.container.util.logging.bash
+          # Remove the following two to reduce the count of layers
+          # - name: jboss.container.eap.hawkular
+          # - name: jboss.container.util.logging.bash
           # Remove following two to reduce count of layers
           # - name: jboss.container.eap.prometheus.config
           # - name: os-eap-txnrecovery.run
