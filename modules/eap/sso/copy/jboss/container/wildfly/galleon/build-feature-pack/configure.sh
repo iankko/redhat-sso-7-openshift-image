@@ -108,7 +108,8 @@ fi
 rm -rf $JBOSS_HOME/*
 
 mkdir -p "${TMP_GALLEON_LOCAL_MAVEN_REPO}/org/wildfly/galleon-plugins/wildfly-galleon-maven-plugin/5.2.0.Alpha2"
-cp "${CEKIT_ARTIFACTS_DEST_DIR}/wildfly-galleon-maven-plugin-5.2.0.Alpha2.pom" \
+cp "${CEKIT_ARTIFACTS_DEST_DIR}/wildfly-galleon-maven-plugin-5.2.0.Alpha2.jar" \
+   "${CEKIT_ARTIFACTS_DEST_DIR}/wildfly-galleon-maven-plugin-5.2.0.Alpha2.pom" \
    "${TMP_GALLEON_LOCAL_MAVEN_REPO}/org/wildfly/galleon-plugins/wildfly-galleon-maven-plugin/5.2.0.Alpha2"
 
 mkdir -p "${TMP_GALLEON_LOCAL_MAVEN_REPO}/org/wildfly/galleon-plugins/wildfly-provisioning-parent/5.2.0.Alpha2"

@@ -55,3 +55,8 @@ artifacts:
     target: wildfly-provisioning-parent-5.2.0.Alpha2.pom
     md5: 03f4634dd62a4e62746a3837fbea608b
     url: https://repo1.maven.org/maven2/org/wildfly/galleon-plugins/wildfly-provisioning-parent/5.2.0.Alpha2/wildfly-provisioning-parent-5.2.0.Alpha2.pom
+
+  - name: wildfly-galleon-maven-plugin-5.2.0.Alpha2.jar
+    target: wildfly-galleon-maven-plugin-5.2.0.Alpha2.jar
+    md5: 3c9a5e92268506c90bce4b37fef83dab
+    url: https://repo.maven.apache.org/maven2/org/wildfly/galleon-plugins/wildfly-galleon-maven-plugin/5.2.0.Alpha2/wildfly-galleon-maven-plugin-5.2.0.Alpha2.jar
