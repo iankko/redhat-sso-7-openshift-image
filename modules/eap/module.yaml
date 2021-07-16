@@ -61,6 +61,8 @@ modules:
             # - name: jboss.container.wildfly.launch.messaging
             # - name: jboss.container.wildfly.launch.statefulset
             # - name: jboss.container.wildfly.galleon.fp-content.jolokia
+          # needs to be before fp-content.keycloak to copy modules used to generate galleon packages
+          - name: os-eap70-sso
           - name: jboss.container.wildfly.galleon.fp-content.keycloak
           - name: jboss.container.wildfly.galleon.fp-content.java
           - name: jboss.container.wildfly.galleon.fp-content.config
