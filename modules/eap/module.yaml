@@ -44,18 +44,22 @@ modules:
           - name: jboss.container.wildfly.launch.extensions
           - name: jboss.container.wildfly.launch.json-logging
           - name: jboss.container.wildfly.launch.jgroups
-          - name: jboss.container.wildfly.launch.filters
-          - name: jboss.container.wildfly.launch.logger-category
+            # The following two were commented out to reduce count of layers
+            # (IOW prevent docker: 'max depth exceeded' error)
+            # - name: jboss.container.wildfly.launch.filters
+            # - name: jboss.container.wildfly.launch.logger-category
           - name: jboss.container.wildfly.launch.os.node-name
           - name: jboss.container.wildfly.launch.deployment-scanner
           - name: jboss.container.wildfly.launch.https
           - name: jboss.container.wildfly.launch.security-domains
           - name: jboss.container.wildfly.launch.elytron
           - name: jboss.container.wildfly.launch.port-offset
-          - name: jboss.container.wildfly.launch.resource-adapters
-          - name: jboss.container.wildfly.launch.messaging
-          - name: jboss.container.wildfly.launch.statefulset
-          - name: jboss.container.wildfly.galleon.fp-content.jolokia
+            # The following four were commented out to reduce count of layers
+            # (IOW to prevent docker: 'max depth exceeded' error)
+            # - name: jboss.container.wildfly.launch.resource-adapters
+            # - name: jboss.container.wildfly.launch.messaging
+            # - name: jboss.container.wildfly.launch.statefulset
+            # - name: jboss.container.wildfly.galleon.fp-content.jolokia
           - name: jboss.container.wildfly.galleon.fp-content.java
           - name: jboss.container.wildfly.galleon.fp-content.config
           - name: jboss.container.wildfly.galleon.fp-content.mvn
