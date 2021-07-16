@@ -75,7 +75,7 @@ modules:
           - name: jboss.container.eap.hawkular
           # - name: jboss.container.util.logging.bash
           # Remove following two to reduce count of layers
-          # - name: jboss.container.eap.prometheus.config
+          - name: jboss.container.eap.prometheus.config
           # - name: os-eap-txnrecovery.run
           #  version: 'python3'
 
