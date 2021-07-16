@@ -36,11 +36,11 @@ modules:
 
 artifacts:
   - name: offliner.jar
-    target: /tmp/offliner.jar
+    target: offliner.jar
     md5: 1aae090277ddcaa89dbcfefff256ae58
     # Be sure the offliner version in the URL matches offliner version in 'OFFLINER_VERSION' env var above
     url: https://repo.maven.apache.org/maven2/com/redhat/red/offliner/offliner/1.6/offliner-1.6.jar
 
   - name: offliner.txt
-    target: /tmp/offliner.txt
+    target: offliner.txt
     url: https://repository.jboss.org/nexus/content/groups/public/org/wildfly/wildfly-dist/23.0.2.Final/wildfly-dist-23.0.2.Final-artifact-list.txt

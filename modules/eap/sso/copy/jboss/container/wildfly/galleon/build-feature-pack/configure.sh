@@ -1,6 +1,9 @@
 #!/bin/sh
 # Configure module
 set -e
+
+declare -r CEKIT_ARTIFACTS_DEST_DIR="/tmp/artifacts"
+
 if [ -z "$WILDFLY_VERSION" ]; then
   echo "WILDFLY_VERSION must be set"
   exit 1
@@ -23,7 +26,7 @@ fi
 
 deleteBuildArtifacts=${DELETE_BUILD_ARTIFACTS:-false}
 
-ZIPPED_REPO="/tmp/artifacts/maven-repo.zip"
+ZIPPED_REPO="${CEKIT_ARTIFACTS_DEST_DIR}/maven-repo.zip"
 if [ -f "${ZIPPED_REPO}" ]; then
   echo "Found zipped repository, installing it."
   unzip ${ZIPPED_REPO} -d /tmp
@@ -44,20 +47,19 @@ if [ -f "${ZIPPED_REPO}" ]; then
     cp -r $TMP_GALLEON_LOCAL_MAVEN_REPO $GALLEON_LOCAL_MAVEN_REPO
   fi
 else
-  if [ ! -f "/tmp/offliner.jar" ]; then
+  if [ ! -f "${CEKIT_ARTIFACTS_DEST_DIR}/offliner.jar" ]; then
     # Download offliner runtime (if not present yet)
-    curl -o /tmp/offliner.jar -v -L https://repo.maven.apache.org/maven2/com/redhat/red/offliner/offliner/$OFFLINER_VERSION/offliner-$OFFLINER_VERSION.jar
+    curl -o "${CEKIT_ARTIFACTS_DEST_DIR}/offliner.jar" -v -L https://repo.maven.apache.org/maven2/com/redhat/red/offliner/offliner/$OFFLINER_VERSION/offliner-$OFFLINER_VERSION.jar
   fi
 
-  if [ ! -f "/tmp/offliner.txt" ]; then
+  if [ ! -f "${CEKIT_ARTIFACTS_DEST_DIR}/offliner.txt" ]; then
     # Download offliner file (if not present yet)
-    curl -o /tmp/offliner.txt -v -L $WILDFLY_DIST_MAVEN_LOCATION/$WILDFLY_VERSION/wildfly-dist-$WILDFLY_VERSION-artifact-list.txt
+    curl -o "${CEKIT_ARTIFACTS_DEST_DIR}/offliner.txt" -v -L $WILDFLY_DIST_MAVEN_LOCATION/$WILDFLY_VERSION/wildfly-dist-$WILDFLY_VERSION-artifact-list.txt
   fi
 
-  # Populate maven repo, in case we have errors (occur when using locally built WildFly, no md5 nor sha files), cd to /tmp where error.logs is written.
-  cd /tmp
-  java -jar /tmp/offliner.jar $OFFLINER_URLS \
-  /tmp/offliner.txt --dir $TMP_GALLEON_LOCAL_MAVEN_REPO > /dev/null
+  # Populate maven repo, in case we have errors (occur when using locally built WildFly, no md5 nor sha files), cd to CEKIT_ARTIFACTS_DEST_DIR where error.logs is written.
+  cd "${CEKIT_ARTIFACTS_DEST_DIR}"
+  java -jar "${CEKIT_ARTIFACTS_DEST_DIR}/offliner.jar" $OFFLINER_URLS "${CEKIT_ARTIFACTS_DEST_DIR}/offliner.txt" --dir $TMP_GALLEON_LOCAL_MAVEN_REPO > /dev/null
   if [ -f ./errors.log ]; then
     echo ERRORS WHILE RETRIEVING ARTIFACTS.
     echo Offliner errors:
@@ -66,7 +68,7 @@ else
   fi
   cd ..
 
-  rm /tmp/offliner.jar && rm /tmp/offliner.txt
+  rm "${CEKIT_ARTIFACTS_DEST_DIR}offliner.jar" && rm "${CEKIT_ARTIFACTS_DEST_DIR}/offliner.txt"
 fi
 
 # these are sourced so the most recent version is last an will apply if present
