@@ -43,4 +43,10 @@ artifacts:
 
   - name: offliner.txt
     target: offliner.txt
+    md5: 3e9b069c866e59ea19aa52e61a334f32
     url: https://repository.jboss.org/nexus/content/groups/public/org/wildfly/wildfly-dist/23.0.2.Final/wildfly-dist-23.0.2.Final-artifact-list.txt
+
+  - name: wildfly-galleon-maven-plugin-5.2.0.Alpha2.pom
+    target: wildfly-galleon-maven-plugin-5.2.0.Alpha2.pom
+    md5: 5cb783c122d2478f0bc82505ad93a054
+    url: https://repo1.maven.org/maven2/org/wildfly/galleon-plugins/wildfly-galleon-maven-plugin/5.2.0.Alpha2/wildfly-galleon-maven-plugin-5.2.0.Alpha2.pom

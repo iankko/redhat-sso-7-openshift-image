@@ -107,6 +107,9 @@ if [ ! -z "$GALLEON_FP_COMMON_PKG_NAME" ]; then
 fi
 rm -rf $JBOSS_HOME/*
 
+cp "${CEKIT_ARTIFACTS_DEST_DIR}/wildfly-galleon-maven-plugin-5.2.0.Alpha2.pom" \
+   "${TMP_GALLEON_LOCAL_MAVEN_REPO}/org/wildfly/galleon-plugins/wildfly-galleon-maven-plugin/5.2.0.Alpha2"
+
 # Build Galleon s2i feature-pack and install it in local maven repository
 mvn -f $GALLEON_FP_PATH/pom.xml install \
 --settings $GALLEON_MAVEN_BUILD_IMG_SETTINGS_XML -Dmaven.repo.local=$TMP_GALLEON_LOCAL_MAVEN_REPO $GALLEON_BUILD_FP_MAVEN_ARGS_APPEND
